@@ -2,7 +2,7 @@ const models = require('../models');
 
 module.exports = {
   get: (req, res) => {
-    models.user.findAll()
+    models.review.findAll()
       .then((data) => {
         res.status(200).send(data);
       })
@@ -11,9 +11,9 @@ module.exports = {
       });
   },
   post: (req, res) => {
-    const user = req.body;
+    const review = req.body;
 
-    models.user.create(user)
+    models.review.create(review)
       .then((data) => {
         res.status(201).send(data);
       })

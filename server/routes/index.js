@@ -16,4 +16,8 @@ router.post('/zipcode', controller.zipcode.post);
 router.get('/city', controller.city.get);
 router.post('/city', controller.city.post);
 
+// review routes
+router.get('/review', controller.review.get);
+router.post('/review', controller.review.post);
+
 module.exports = router;
