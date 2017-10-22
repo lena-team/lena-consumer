@@ -20,4 +20,8 @@ router.post('/city', controller.city.post);
 router.get('/review', controller.review.get);
 router.post('/review', controller.review.post);
 
+// cart routes
+router.get('/cart', controller.cart.get);
+router.post('/cart', controller.cart.post);
+
 module.exports = router;
