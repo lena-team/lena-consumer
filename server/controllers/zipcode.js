@@ -2,9 +2,7 @@ const models = require('../models');
 
 module.exports = {
   get: (req, res) => {
-    const { zipcode } = req.query;
-
-    models.zipcode.findAll(zipcode)
+    models.zipcode.findAll()
       .then((data) => {
         res.status(200).send(data);
       })

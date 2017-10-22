@@ -1,18 +1,8 @@
-const db = require('./index');
-// const mysql = require('mysql2');
+const models = require('../models');
 
-// db.User.sync()
-//   .then( () => {
-//     db.Zipcodes.sync();
-//   })
-//   .catch((err) => {
-//     throw err;
-//   })
-
-db.sequelize.sync()
-  .then(() => {
-    // console.log('done');
-  })
+models.user.sync()
+  .then(() => models.zipcode.sync())
+  .then(() => models.city.sync())
   .catch((err) => {
     throw err;
   });

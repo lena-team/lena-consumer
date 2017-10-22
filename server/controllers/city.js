@@ -2,9 +2,7 @@ const models = require('../models');
 
 module.exports = {
   get: (req, res) => {
-    const { product } = req.query;
-
-    models.user.findAll(product)
+    models.city.findAll()
       .then((data) => {
         res.status(200).send(data);
       })
@@ -13,9 +11,9 @@ module.exports = {
       });
   },
   post: (req, res) => {
-    const user = req.body;
+    const { city } = req.body;
 
-    models.user.create(user)
+    models.city.create(city)
       .then((data) => {
         res.status(201).send(data);
       })

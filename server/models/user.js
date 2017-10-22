@@ -33,15 +33,24 @@ const User = sequelize.define('users', {
   lastname: {
     type: Sequelize.STRING,
   },
+  createdAt: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
+  },
 });
+
+const sync = () => User.sync();
 
 const findAll = () => User.findAll();
 
-const create = user => User.create({
-  user,
-});
+const create = user => User.create(user);
 
 module.exports = {
+  sync,
   create,
   findAll,
 };

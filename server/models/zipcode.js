@@ -1,6 +1,6 @@
 const { Sequelize, sequelize } = require('../db');
 
-const Zipcodes = sequelize.define('zipcodes', {
+const Zipcode = sequelize.define('zipcodes', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -11,13 +11,16 @@ const Zipcodes = sequelize.define('zipcodes', {
   },
 });
 
-const findAll = () => Zipcodes.findAll();
+const sync = () => Zipcode.sync();
 
-const create = zipcode => Zipcodes.create({
+const findAll = () => Zipcode.findAll();
+
+const create = zipcode => Zipcode.create({
   zipcode,
 });
 
 module.exports = {
+  sync,
   create,
   findAll,
 };
