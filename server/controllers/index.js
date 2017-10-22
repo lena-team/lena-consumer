@@ -4,6 +4,7 @@ const zipcode = require('./zipcode');
 const city = require('./city');
 const review = require('./review');
 const cart = require('./cart');
+const payment = require('./payment');
 
 module.exports = {
   search,
@@ -12,4 +13,5 @@ module.exports = {
   city,
   review,
   cart,
+  payment,
 };

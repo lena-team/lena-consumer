@@ -24,4 +24,8 @@ router.post('/review', controller.review.post);
 router.get('/cart', controller.cart.get);
 router.post('/cart', controller.cart.post);
 
+// payment routes
+router.get('/payment', controller.payment.get);
+router.post('/payment', controller.payment.post);
+
 module.exports = router;
