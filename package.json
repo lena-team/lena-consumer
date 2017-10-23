@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server/index.js",
     "dev-start": "nodemon server/index.js",
-    "test-server": "mocha server/test/**Spec.js",
+    "lint": "eslint server/",
+    "unit": "mocha server/test/**Spec.js",
+    "test": "npm run-script lint && npm run-script unit",
     "coverage": "istanbul cover --report lcov --report json --report text --report html _mocha  -r server/test/*Spec.js"
   },
   "repository": {
@@ -20,6 +22,7 @@
   },
   "homepage": "https://github.com/lena-team/lena-consumer#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "express": "^4.16.2",

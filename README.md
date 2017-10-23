@@ -13,6 +13,8 @@
       - [install mysql](#install-mysql)
       - [start mysql](#start-mysql)
       - [create database](#create-database)
+    - [Python Setup](#python-setup)
+      - [install python](#install-python)
     - [Airbnb Style Guide Setup](#airbnb-style-guide-setup)
       - [global](#global)
       - [local](#local)
@@ -22,7 +24,9 @@
       - [install](#install)
       - [start](#start)
       - [dev-start (with nodemon)](#dev-start-with-nodemon)
-      - [test-server (with mocha)](#test-server-with-mocha)
+      - [lint test (with eslint)](#lint-test-with-eslint)
+      - [unit test (with mocha)](#unit-test-with-mocha)
+      - [test](#test)
       - [coverage (istanbul with mocha)](#coverage-istanbul-with-mocha)
   - [Other Information](#other-information)
 
@@ -71,6 +75,20 @@ mysql> CREATE DATABASE consumer;
 mysql> CREATE DATABASE test_consumer;
 ```
 
+### Python Setup
+#### install python
+
+> read the instructions given by the 'brew install python' command
+> we are going to use python2 and pip2 only
+> refer https://docs.brew.sh/Homebrew-and-Python.html
+
+```
+$ brew install python
+$
+$ python2 --version
+$ pip2 --version
+```
+
 ### Airbnb Style Guide Setup
 
 #### global
@@ -113,9 +131,19 @@ $ npm start
 $ npm dev-start
 ```
 
-#### test-server (with mocha)
+#### lint test (with eslint)
 ```
-$ npm test-server
+$ npm lint
+```
+
+#### unit test (with mocha)
+```
+$ npm unit
+```
+
+#### test
+```
+$ npm test
 ```
 
 #### coverage (istanbul with mocha)
