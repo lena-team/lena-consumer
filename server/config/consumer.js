@@ -1,9 +1,35 @@
-const AUTH_TOKEN = process.env.AUTH_TOKEN || '98e6fad153bc3f26b19f2f27f175da2cc44b042a';
-const URI = process.env.URI || 'https://lena-inventory.com/';
-const USER_AGENT = 'lena-consumer';
-
 module.exports = {
-  AUTH_TOKEN,
-  URI,
-  USER_AGENT,
+  dev: {
+    username: process.env.DB_USERNAME || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_DATABASE || 'consumer',
+    host: process.env.DB_HOST || 'localhost',
+    dialect: process.env.DB_DIALECT || 'mysql',
+    define: {
+      timestamps: false,
+    },
+    logging: false,
+  },
+  test: {
+    username: process.env.DB_USERNAME || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_DATABASE || 'test_consumer',
+    host: process.env.DB_HOST || 'localhost',
+    dialect: process.env.DB_DIALECT || 'mysql',
+    define: {
+      timestamps: false,
+    },
+    logging: false,
+  },
+  prod: {
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    define: {
+      timestamps: false,
+    },
+  },
+  logging: false,
 };

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const CONFIG = require('../config/inventory');
+const CONFIG = require('../config/consumer');
 
 const NODE_ENV = process.env.NODE_ENV || 'dev';
 
