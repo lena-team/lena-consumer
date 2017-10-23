@@ -13,12 +13,11 @@ lena consumer web service
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
+    1. [Airbnb Style Guide Setup](#Airbnb Style Guide Setup)
+    1. [MySQL Setup](#MySQL Setup)
 
 ## Usage
 
-> Some usage instructions
 
 ## Requirements
 
@@ -29,10 +28,10 @@ lena consumer web service
 
 ### Airbnb Style Guide Setup
 ```
-# globally
+# global
 npm install -g eslint-config-airbnb eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
 
-# project specific
+# local (project specific)
 npm install --save-dev eslint-config-airbnb eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
 
 # add .eslintrc (global/local)
