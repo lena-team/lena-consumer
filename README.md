@@ -5,21 +5,22 @@
 - [Project Name](#project-name)
   - [Roadmap](#roadmap)
   - [Contributing](#contributing)
-- [Table of Contents](#table-of-contents)
   - [Usage](#usage)
   - [Requirements](#requirements)
-  - [Development](#development)
-    - [Airbnb Style Guide Setup](#airbnb-style-guide-setup)
-      - [global](#global)
-      - [local (project specific)](#local-project-specific)
-      - [add .eslintrc (global/local)](#add-eslintrc-globallocal)
+  - [Setup (Mac)](#setup-mac)
+    - [Node Setup](#node-setup)
     - [MySQL Setup](#mysql-setup)
-      - [install mysql (Mac)](#install-mysql-mac)
+      - [install mysql](#install-mysql)
       - [start mysql](#start-mysql)
       - [create database](#create-database)
+    - [Airbnb Style Guide Setup](#airbnb-style-guide-setup)
+      - [global](#global)
+      - [local](#local)
+      - [configure .eslintrc (global/local)](#configure-eslintrc-globallocal)
+  - [Development](#development)
     - [npm Scripts](#npm-scripts)
       - [install](#install)
-      - [start (with node)](#start-with-node)
+      - [start](#start)
       - [dev-start (with nodemon)](#dev-start-with-nodemon)
       - [test-server (with mocha)](#test-server-with-mocha)
       - [coverage (istanbul with mocha)](#coverage-istanbul-with-mocha)
@@ -33,18 +34,9 @@ lena consumer web service
 
 ## Roadmap
 
-
 ## Contributing
 
-
-# Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
 ## Usage
-
 
 ## Requirements
 
@@ -52,35 +44,19 @@ lena consumer web service
 - [MySQL 5.7.20](https://www.mysql.com/)
 - [MySQL Workbench 6.3](https://www.mysql.com/products/workbench/)
 
-## Development
+## Setup (Mac)
 
-### Airbnb Style Guide Setup
-
-#### global
+### Node Setup
 ```
-$ npm install -g eslint-config-airbnb eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
-```
-
-#### local (project specific)
-```
-$ npm install --save-dev eslint-config-airbnb eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
-```
-
-#### add .eslintrc (global/local)
-```
-$ cat .eslintrc.js
-// These rules enforce the Airbnb style guide.
-
-module.exports = {
-  extends: 'airbnb',
-  env: { browser: true },
-};
+$ brew install node
+$ node --version
 ```
 
 ### MySQL Setup
-#### install mysql (Mac)
+#### install mysql
 ```
 $ brew install mysql
+$ mysql --version
 ```
 
 #### start mysql
@@ -91,12 +67,34 @@ $ brew services start mysql
 #### create database
 ```
 $ mysql -u <user> -p <password>
-mysql>
 mysql> CREATE DATABASE consumer;
-mysql>
 mysql> CREATE DATABASE test_consumer;
-mysql>
 ```
+
+### Airbnb Style Guide Setup
+
+#### global
+```
+$ npm install -g eslint-config-airbnb eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
+```
+
+#### local
+```
+$ npm install --save-dev eslint-config-airbnb eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
+```
+
+#### configure .eslintrc (global/local)
+```
+$ cat .eslintrc.js
+// These rules enforce the Airbnb style guide.
+
+module.exports = {
+  extends: 'airbnb',
+  env: { browser: true },
+};
+```
+
+## Development
 
 ### npm Scripts
 
@@ -105,7 +103,7 @@ mysql>
 $ npm install
 ```
 
-#### start (with node)
+#### start
 ```
 $ npm start
 ```
