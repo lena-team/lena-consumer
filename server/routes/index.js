@@ -28,4 +28,8 @@ router.post('/cart', controller.cart.post);
 router.get('/payment', controller.payment.get);
 router.post('/payment', controller.payment.post);
 
+// address routes
+router.get('/address', controller.address.get);
+router.post('/address', controller.address.post);
+
 module.exports = router;

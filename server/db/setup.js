@@ -6,6 +6,7 @@ models.user.sync()
   .then(() => models.review.sync())
   .then(() => models.cart.sync())
   .then(() => models.payment.sync())
+  .then(() => models.address.sync())
   .catch((err) => {
     throw err;
   });

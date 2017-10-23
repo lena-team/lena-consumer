@@ -4,6 +4,7 @@ const city = require('./city');
 const review = require('./review');
 const cart = require('./cart');
 const payment = require('./payment');
+const address = require('./address');
 
 module.exports = {
   user,
@@ -12,4 +13,5 @@ module.exports = {
   review,
   cart,
   payment,
+  address,
 };
