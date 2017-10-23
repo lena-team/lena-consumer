@@ -91,11 +91,11 @@ $ brew services start mysql
 #### create database
 ```
 $ mysql -u <user> -p <password>
->
-> CREATE DATABASE consumer;
->
-> CREATE DATABASE test_consumer;
->
+mysql>
+mysql> CREATE DATABASE consumer;
+mysql>
+mysql> CREATE DATABASE test_consumer;
+mysql>
 ```
 
 ### npm Scripts
