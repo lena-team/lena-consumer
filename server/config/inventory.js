@@ -8,6 +8,7 @@ module.exports = {
     define: {
       timestamps: false,
     },
+    logging: true,
   },
   test: {
     username: process.env.DB_USERNAME || 'root',
@@ -18,6 +19,7 @@ module.exports = {
     define: {
       timestamps: false,
     },
+    logging: false,
   },
   prod: {
     username: process.env.DB_USERNAME,
@@ -29,4 +31,5 @@ module.exports = {
       timestamps: false,
     },
   },
+  logging: false,
 };

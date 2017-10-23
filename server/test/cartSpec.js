@@ -6,7 +6,7 @@ const setup = require('../db/setup');
 
 const request = supertest.agent(server);
 
-describe('Server User Spec', () => {
+describe('Server Cart Spec', () => {
   before((done) => {
     setup.sync()
       .then(() => {
@@ -14,27 +14,22 @@ describe('Server User Spec', () => {
       });
   });
 
-  it('should get all user', (done) => {
+  it('should get all cart', (done) => {
     request
-      .get('/user')
+      .get('/cart')
       .expect(200, done);
   });
 
-  it('should create user', (done) => {
-    const userParams = {
-      username: 'nandakishore',
-      password: '1234abcd',
-      email: 'nsaboo@github.com',
-      age: 22,
-      mobile: 919980499811,
-      gender: 1,
-      firstname: 'Nandakishore',
-      lastname: 'Saboo',
+  it('should create cart', (done) => {
+    const cartParams = {
+      user_id: 1,
+      product_id: 1,
+      quantity: 9,
     };
 
     request
-      .post('/user')
-      .send(userParams)
+      .post('/cart')
+      .send(cartParams)
       .set('Accept', 'application/json')
       .expect(201, done);
   });

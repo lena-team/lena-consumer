@@ -1,6 +1,6 @@
 const models = require('../models');
 
-models.user.sync()
+const sync = () => models.user.sync()
   .then(() => models.zipcode.sync())
   .then(() => models.city.sync())
   .then(() => models.review.sync())
@@ -10,3 +10,9 @@ models.user.sync()
   .catch((err) => {
     throw err;
   });
+
+sync();
+
+module.exports = {
+  sync,
+};
