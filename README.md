@@ -13,8 +13,6 @@ lena consumer web service
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
-    1. [Airbnb Style Guide Setup](#Airbnb Style Guide Setup)
-    1. [MySQL Setup](#MySQL Setup)
 
 ## Usage
 
