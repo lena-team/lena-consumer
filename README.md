@@ -80,7 +80,6 @@ module.exports = {
 ### MySQL Setup
 #### install mysql (Mac)
 ```
-# install mysql (Mac)
 $ brew install mysql
 ```
 
@@ -91,7 +90,7 @@ $ brew services start mysql
 
 #### create database
 ```
-mysql -u <user> -p <password>
+$ mysql -u <user> -p <password>
 >
 > CREATE DATABASE consumer;
 >
@@ -103,27 +102,27 @@ mysql -u <user> -p <password>
 
 #### install
 ```
-npm install
+$ npm install
 ```
 
 #### start (with node)
 ```
-npm start
+$ npm start
 ```
 
 #### dev-start (with nodemon)
 ```
-npm dev-start
+$ npm dev-start
 ```
 
 #### test-server (with mocha)
 ```
-npm test-server
+$ npm test-server
 ```
 
 #### coverage (istanbul with mocha)
 ```
-npm coverage
+$ npm coverage
 ```
 
 ## Other Information
