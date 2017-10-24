@@ -10,7 +10,23 @@ describe('Server Payment Spec', () => {
   before((done) => {
     setup.sync()
       .then(() => {
-        done();
+        // add user
+        const userParams = {
+          username: 'nandakishore',
+          password: '1234abcd',
+          email: 'nsaboo@github.com',
+          age: 22,
+          mobile: 919980499811,
+          gender: 1,
+          firstname: 'Nandakishore',
+          lastname: 'Saboo',
+        };
+
+        request
+          .post('/user')
+          .send(userParams)
+          .set('Accept', 'application/json')
+          .expect(201, done);
       });
   });
 
@@ -22,7 +38,7 @@ describe('Server Payment Spec', () => {
 
   it('should create payment', (done) => {
     const paymentParams = {
-      user_id: 1,
+      userId: 1,
       card_type: 'American Express',
       card_number: '1234567890123456',
       card_expiry: '12/21',

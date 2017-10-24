@@ -1,4 +1,8 @@
 const { Sequelize, sequelize } = require('../db');
+const { Cart } = require('./cart');
+const { Review } = require('./review');
+const { Payment } = require('./payment');
+const { Address } = require('./address');
 
 const User = sequelize.define('users', {
   id: {
@@ -21,9 +25,6 @@ const User = sequelize.define('users', {
   mobile: {
     type: Sequelize.STRING,
   },
-  create_time: {
-    type: Sequelize.DATE,
-  },
   gender: {
     type: Sequelize.INTEGER,
   },
@@ -33,15 +34,17 @@ const User = sequelize.define('users', {
   lastname: {
     type: Sequelize.STRING,
   },
-  createdAt: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
-  },
-  updatedAt: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
-  },
 });
+
+User.hasMany(Cart);
+User.hasMany(Review);
+User.hasMany(Payment);
+User.hasMany(Address);
+
+// Cart.belongsTo(User);
+// Review.belongsTo(User);
+// Payment.belongsTo(User);
+// Address.belongsTo(User);
 
 const sync = () => User.sync();
 
@@ -50,6 +53,7 @@ const findAll = () => User.findAll();
 const create = user => User.create(user);
 
 module.exports = {
+  User,
   sync,
   create,
   findAll,

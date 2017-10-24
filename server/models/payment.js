@@ -6,9 +6,6 @@ const Payment = sequelize.define('payments', {
     primaryKey: true,
     autoIncrement: true,
   },
-  user_id: { // to be fixed, with user id
-    type: Sequelize.INTEGER,
-  },
   card_type: { // to be fixed, with product table id
     type: Sequelize.STRING,
   },
@@ -21,14 +18,6 @@ const Payment = sequelize.define('payments', {
   card_cvv: {
     type: Sequelize.STRING,
   },
-  createdAt: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
-  },
-  updatedAt: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
-  },
 });
 
 const sync = () => Payment.sync();
@@ -38,6 +27,7 @@ const findAll = () => Payment.findAll();
 const create = payment => Payment.create(payment);
 
 module.exports = {
+  Payment,
   sync,
   create,
   findAll,
