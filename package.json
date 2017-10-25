@@ -1,6 +1,6 @@
 {
   "name": "lena-consumer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "lena consumer service",
   "main": "index.js",
   "scripts": {
