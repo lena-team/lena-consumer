@@ -1,0 +1,26 @@
+version: 1.0.1
+
+phases:
+  install:
+    commands:
+      - echo installing lena-consumer web service...
+      - npm install
+  # pre_build:
+  #   commands:
+  #     - echo Installing source NPM dependencies...
+  #     - npm install unit.js
+  # build:
+  #   commands:
+  #     - echo Build started on `date`
+  #     - echo Compiling the Node.js code
+  #     - mocha HelloWorld.js
+  test:
+    commands:
+      - echo testing lena-consumer web service...
+      - npm run test
+  # post_build:
+  #   commands:
+  #     - echo Build completed on `date`
+# artifacts:
+#   files:
+#     - HelloWorld.js
