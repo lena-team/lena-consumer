@@ -8,7 +8,7 @@ module.exports = {
     define: {
       timestamps: true,
     },
-    logging: false,
+    logging: true,
   },
   test: {
     username: process.env.DB_USERNAME || 'root',

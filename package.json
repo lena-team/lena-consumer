@@ -7,9 +7,9 @@
     "start": "node server/index.js",
     "dev-start": "nodemon server/index.js",
     "lint": "eslint server/",
-    "unit": "mocha server/test/**Spec.js",
-    "test": "npm run-script lint && npm run-script unit",
-    "coverage": "istanbul cover --report lcov --report json --report text --report html _mocha  -r server/test/*Spec.js"
+    "unit": "mocha server/test/*Spec.js",
+    "coverage": "istanbul cover --report lcov --report json --report text --report html _mocha  -r server/test/*Spec.js",
+    "test": "npm run-script lint && npm run-script unit && npm run coverage"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "morgan": "^1.9.0",
     "mysql2": "^1.4.2",
     "request": "^2.83.0",
+    "request-promise": "^4.2.2",
     "sequelize": "^4.15.1",
     "supertest": "^3.0.0"
   },
