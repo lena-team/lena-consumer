@@ -1,5 +1,12 @@
 version: 0.2
 
+env:
+  variables:
+    DB_USERNAME: "lenaadmin"
+    DB_PASSWORD: "aaaaaaaaa"
+    DB_DIALECT: "mysql"
+    NODE_ENV: "prod"
+
 phases:
   install:
     commands:
