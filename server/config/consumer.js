@@ -6,7 +6,7 @@ module.exports = {
     host: process.env.DB_HOST || 'localhost',
     dialect: process.env.DB_DIALECT || 'mysql',
     define: {
-      timestamps: false,
+      timestamps: true,
     },
     logging: false,
   },
@@ -17,7 +17,7 @@ module.exports = {
     host: process.env.DB_HOST || 'localhost',
     dialect: process.env.DB_DIALECT || 'mysql',
     define: {
-      timestamps: false,
+      timestamps: true,
     },
     logging: false,
   },
@@ -28,7 +28,7 @@ module.exports = {
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
     define: {
-      timestamps: false,
+      timestamps: true,
     },
   },
   logging: false,

@@ -1,4 +1,5 @@
 const { Sequelize, sequelize } = require('../db');
+const { Address } = require('./address');
 
 const Zipcode = sequelize.define('zipcodes', {
   id: {
@@ -11,6 +12,8 @@ const Zipcode = sequelize.define('zipcodes', {
   },
 });
 
+Zipcode.hasOne(Address);
+
 const sync = () => Zipcode.sync();
 
 const findAll = () => Zipcode.findAll();
@@ -20,6 +23,7 @@ const create = zipcode => Zipcode.create({
 });
 
 module.exports = {
+  Zipcode,
   sync,
   create,
   findAll,

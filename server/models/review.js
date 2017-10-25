@@ -6,9 +6,6 @@ const Review = sequelize.define('reviews', {
     primaryKey: true,
     autoIncrement: true,
   },
-  user_id: { // to be fixed, with user id
-    type: Sequelize.INTEGER,
-  },
   product_id: { // to be fixed, with product table id
     type: Sequelize.INTEGER,
   },
@@ -17,14 +14,6 @@ const Review = sequelize.define('reviews', {
   },
   rating: {
     type: Sequelize.INTEGER,
-  },
-  createdAt: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
-  },
-  updatedAt: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
   },
 });
 
@@ -35,6 +24,7 @@ const findAll = () => Review.findAll();
 const create = review => Review.create(review);
 
 module.exports = {
+  Review,
   sync,
   create,
   findAll,

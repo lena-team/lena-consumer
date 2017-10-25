@@ -10,7 +10,23 @@ describe('Server Cart Spec', () => {
   before((done) => {
     setup.sync()
       .then(() => {
-        done();
+        // add user
+        const userParams = {
+          username: 'nandakishore',
+          password: '1234abcd',
+          email: 'nsaboo@github.com',
+          age: 22,
+          mobile: 919980499811,
+          gender: 1,
+          firstname: 'Nandakishore',
+          lastname: 'Saboo',
+        };
+
+        request
+          .post('/user')
+          .send(userParams)
+          .set('Accept', 'application/json')
+          .expect(201, done);
       });
   });
 
@@ -22,8 +38,8 @@ describe('Server Cart Spec', () => {
 
   it('should create cart', (done) => {
     const cartParams = {
-      user_id: 1,
-      product_id: 1,
+      userId: 1,
+      productId: 1,
       quantity: 9,
     };
 

@@ -1,4 +1,5 @@
 const { Sequelize, sequelize } = require('../db');
+const { Address } = require('./address');
 
 const City = sequelize.define('cities', {
   id: {
@@ -11,6 +12,8 @@ const City = sequelize.define('cities', {
   },
 });
 
+City.hasOne(Address);
+
 const sync = () => City.sync();
 
 const findAll = () => City.findAll();
@@ -20,6 +23,7 @@ const create = city => City.create({
 });
 
 module.exports = {
+  City,
   sync,
   create,
   findAll,
