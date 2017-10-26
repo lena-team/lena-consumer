@@ -1,11 +1,12 @@
 version: 0.2
 
-env:
-  variables:
-    DB_USERNAME: "lenaadmin"
-    DB_PASSWORD: "aaaaaaaaa"
-    DB_DIALECT: "mysql"
-    NODE_ENV: "prod"
+# env:
+#  variables:
+#    DB_USERNAME: "lenaadmin"
+#    DB_PASSWORD: "lenaadmin"
+#    DB_DIALECT: "mysql"
+#    DB_HOST: "consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com"
+#    NODE_ENV: "prod"
 
 phases:
   install:
@@ -16,3 +17,7 @@ phases:
     commands:
       - echo Build started on `date`
       - npm test
+
+# artifacts:
+  # type: s3
+  # location: lena-consumer
