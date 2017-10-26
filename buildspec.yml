@@ -3,10 +3,10 @@ version: 0.2
 env:
   variables:
     NODE_ENV: "prod"
-    # DB_USERNAME: "lenaadmin"
-    # DB_PASSWORD: "aaaaaaaaa"
-    # DB_DIALECT: "mysql"
-    # DB_HOST: "consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com"
+    DB_USERNAME: $(aws ssm get-parameters --region us-west-1 --names DB_USERNAME --query Parameters[0].DB_USERNAME)
+    DB_PASSWORD: $(aws ssm get-parameters --region us-west-1 --names DB_PASSWORD --query Parameters[0].DB_PASSWORD)
+    DB_DIALECT: $(aws ssm get-parameters --region us-west-1 --names DB_DIALECT --query Parameters[0].DB_DIALECT)
+    DB_HOST: $(aws ssm get-parameters --region us-west-1 --names DB_HOST --query Parameters[0].DB_HOST)
 
 phases:
   install:
@@ -15,6 +15,10 @@ phases:
       - npm install
   pre_build:
     commands:
+      - DB_USERNAME=$(aws ssm get-parameters --region us-west-1 --names DB_USERNAME --query Parameters[0].DB_USERNAME)
+      - DB_PASSWORD=$(aws ssm get-parameters --region us-west-1 --names DB_PASSWORD --query Parameters[0].DB_PASSWORD)
+      - DB_DIALECT=$(aws ssm get-parameters --region us-west-1 --names DB_DIALECT --query Parameters[0].DB_DIALECT)
+      - DB_HOST=$(aws ssm get-parameters --region us-west-1 --names DB_HOST --query Parameters[0].DB_HOST)
       - echo Build started on `date`
       - npm test
 
