@@ -1,6 +1,6 @@
 version: 0.2
 
- env:
+env:
   variables:
     NODE_ENV: "prod"
     DB_USERNAME: "lenaadmin"
