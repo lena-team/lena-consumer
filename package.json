@@ -7,9 +7,9 @@
     "start": "node server/index.js",
     "dev-start": "nodemon server/index.js",
     "lint": "eslint server/",
-    "unit": "mocha server/test/*Spec.js",
-    "coverage": "istanbul cover --report lcov --report json --report text --report html _mocha  -r server/test/*Spec.js",
-    "test": "npm run-script lint && npm run-script unit && npm run coverage"
+    "unit": "NODE_ENV=test mocha server/test/*Spec.js",
+    "coverage": "NODE_ENV=test istanbul cover --report lcov --report json --report text --report html _mocha  -r server/test/*Spec.js",
+    "test": "NODE_ENV=test npm run-script lint && npm run-script unit && npm run coverage"
   },
   "repository": {
     "type": "git",

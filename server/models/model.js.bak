@@ -1,0 +1,41 @@
+const { Sequelize, sequelize } = require('../db');
+
+
+class Model {
+  constructor() {
+    this.sequelize = this.sequelize;
+    this.Sequelize = this.Sequelize;
+  }
+
+  sync() {
+    this.sync();
+  }
+
+  findAll() {
+    this.
+  }
+}
+
+const Address = sequelize.define('addresses', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  address: {
+    type: Sequelize.STRING,
+  },
+});
+
+const sync = () => Address.sync();
+
+const findAll = () => Address.findAll();
+
+const create = address => Address.create(address);
+
+module.exports = {
+  Address,
+  sync,
+  create,
+  findAll,
+};
