@@ -3,10 +3,10 @@ version: 0.2
 env:
   variables:
     NODE_ENV: "prod"
-    DB_USERNAME: "lenaadmin"
-    DB_PASSWORD: "aaaaaaaaa"
-    DB_DIALECT: "mysql"
-    DB_HOST: "consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com"
+    # DB_USERNAME: "lenaadmin"
+    # DB_PASSWORD: "aaaaaaaaa"
+    # DB_DIALECT: "mysql"
+    # DB_HOST: "consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com"
 
 phases:
   install:
