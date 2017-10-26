@@ -12,6 +12,7 @@ phases:
   install:
     commands:
       - echo Installing source NPM dependencies...
+      - echo $NODE_ENV $DB_USERNAME $DB_PASSWORD $DB_HOST $DB_DIALECT
       - npm install
   pre_build:
     commands:
@@ -19,6 +20,7 @@ phases:
       - DB_PASSWORD=$(aws ssm get-parameters --region us-west-1 --names DB_PASSWORD --query Parameters[0].Value)
       - DB_DIALECT=$(aws ssm get-parameters --region us-west-1 --names DB_DIALECT --query Parameters[0].Value)
       - DB_HOST=$(aws ssm get-parameters --region us-west-1 --names DB_HOST --query Parameters[0].Value)
+      - echo $NODE_ENV $DB_USERNAME $DB_PASSWORD $DB_HOST $DB_DIALECT
       - echo Build started on `date`
       - npm test
 
