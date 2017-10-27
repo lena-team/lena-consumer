@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile/node
+    image: nsaboo/node
     volumes:
       - .:/code
       - logvolume01:/var/log
@@ -15,5 +16,11 @@ services:
     build:
       context: .
       dockerfile: dockerfile/mysql
+    image: nsaboo/mysql
+  python:
+    build:
+      context: .
+      dockerfile: dockerfile/python
+    image: nsaboo/python
 volumes:
   logvolume01: {}
