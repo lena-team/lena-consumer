@@ -3,10 +3,10 @@ version: 0.2
 env:
   variables:
     NODE_ENV: "prod"
-    DB_USERNAME: $(aws ssm get-parameters --region us-west-1 --names DB_USERNAME --query Parameters[0].Value)
-    DB_PASSWORD: $(aws ssm get-parameters --region us-west-1 --names DB_PASSWORD --query Parameters[0].Value)
-    DB_HOST: $(aws ssm get-parameters --region us-west-1 --names DB_HOST --query Parameters[0].Value)
-    DB_DIALECT: $(aws ssm get-parameters --region us-west-1 --names DB_DIALECT --query Parameters[0].Value)
+    # DB_USERNAME: $(aws ssm get-parameters --region us-west-1 --names DB_USERNAME --query Parameters[0].Value)
+    # DB_PASSWORD: $(aws ssm get-parameters --region us-west-1 --names DB_PASSWORD --query Parameters[0].Value)
+    # DB_HOST: $(aws ssm get-parameters --region us-west-1 --names DB_HOST --query Parameters[0].Value)
+    # DB_DIALECT: $(aws ssm get-parameters --region us-west-1 --names DB_DIALECT --query Parameters[0].Value)
 
 phases:
   install:
