@@ -1,0 +1,19 @@
+version: '3'
+services:
+  node:
+    build:
+      context: .
+      dockerfile: dockerfile/node
+    volumes:
+      - .:/code
+      - logvolume01:/var/log
+    ports:
+      - "3000:3000"
+    links:
+      - mysql
+  mysql:
+    build:
+      context: .
+      dockerfile: dockerfile/mysql
+volumes:
+  logvolume01: {}
