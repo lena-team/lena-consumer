@@ -29,7 +29,6 @@ phases:
       - npm --version
       - node --version
       - aws --version
-      - docker --version
       - npm test
 
 # artifacts:
