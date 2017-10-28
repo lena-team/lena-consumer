@@ -18,9 +18,9 @@ phases:
       # - export DB_DATABASE = $MYSQL_DATABASE
       ### Hardcoded Environment Variables
       # - export DB_USERNAME=lenaadmin
-      # - export DB_PASSWORD=lenaadmin
+      # - export DB_PASSWORD=*******
       # - export DB_DATABASE=consumer
-      # - export DB_HOST=consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com
+      # - export DB_HOST=*******
       ### aws EC2 Specific Environment Variables
       - export DB_USERNAME=$(aws ssm get-parameters --region us-west-1 --names DB_USERNAME --query Parameters[0].Value | cut -d'"' -f2)
       - export DB_PASSWORD=$(aws ssm get-parameters --region us-west-1 --names DB_PASSWORD --query Parameters[0].Value | cut -d'"' -f2)
@@ -34,7 +34,6 @@ phases:
       - aws --version
       ### npm test
       - npm test
-      - yum install -y docker && service docker start && docker-compose up -d .
 
 # artifacts:
   # type: s3
