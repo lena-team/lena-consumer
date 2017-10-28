@@ -13,18 +13,23 @@ phases:
       - npm install
   pre_build:
     commands:
-      - DB_USERNAME = $MYSQL_USER
-      - DB_PASSWORD = $MYSQL_PASSWORD
-      - DB_DATABASE = $MYSQL_DATABASE
+      # - export DB_USERNAME = $MYSQL_USER
+      # - export DB_PASSWORD = $MYSQL_PASSWORD
+      # - export DB_DATABASE = $MYSQL_DATABASE
+      - export DB_USERNAME=lenaadmin
+      - export DB_PASSWORD=lenaadmin
+      - export DB_DATABASE=consumer
+      - export DB_HOST=consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com
       # - export DB_USERNAME=$(aws ssm get-parameters --region us-west-1 --names DB_USERNAME --query Parameters[0].Value)
       # - export DB_PASSWORD=$(aws ssm get-parameters --region us-west-1 --names DB_PASSWORD --query Parameters[0].Value)
-      - export DB_HOST=$(aws ssm get-parameters --region us-west-1 --names DB_HOST --query Parameters[0].Value)
+      # - export DB_HOST=$(aws ssm get-parameters --region us-west-1 --names DB_HOST --query Parameters[0].Value)
       # - export DB_DATABASE=$(aws ssm get-parameters --region us-west-1 --names DB_DATABASE --query Parameters[0].Value)
       - echo $NODE_ENV $DB_USERNAME $DB_PASSWORD $DB_HOST $DB_DIALECT $DB_DATABASE
       - echo Build started on `date`
       - npm --version
       - node --version
       - awscli --version
+      - docker --version
       - npm test
 
 # artifacts:
