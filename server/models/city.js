@@ -10,6 +10,13 @@ const City = sequelize.define('cities', {
   city: {
     type: Sequelize.STRING,
   },
+}, {
+  indexes: [
+    {
+      // unique: true,
+      fields: ['city', 'createdAt'],
+    },
+  ],
 });
 
 City.hasOne(Address);

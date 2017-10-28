@@ -15,6 +15,13 @@ const Review = sequelize.define('reviews', {
   rating: {
     type: Sequelize.INTEGER,
   },
+}, {
+  indexes: [
+    {
+      // unique: true,
+      fields: ['userId', 'review', 'rating', 'createdAt'],
+    },
+  ],
 });
 
 const sync = () => Review.sync();

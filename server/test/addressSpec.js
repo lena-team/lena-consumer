@@ -1,5 +1,3 @@
-// process.env.NODE_ENV = 'test';
-
 const server = require('../index.js');
 const supertest = require('supertest');
 const setup = require('../db/setup');

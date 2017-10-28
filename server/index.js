@@ -6,7 +6,7 @@ const path = require('path');
 const compression = require('compression');
 
 const app = express();
-app.use(morgan('dev'));
+app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, '/../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -9,6 +9,13 @@ const Address = sequelize.define('addresses', {
   address: {
     type: Sequelize.STRING,
   },
+}, {
+  indexes: [
+    {
+      // unique: true,
+      fields: ['userId', 'zipcodeId', 'cityId', 'createdAt'],
+    },
+  ],
 });
 
 const sync = () => Address.sync();

@@ -10,6 +10,13 @@ const Zipcode = sequelize.define('zipcodes', {
   zipcode: {
     type: Sequelize.INTEGER,
   },
+}, {
+  indexes: [
+    {
+      // unique: true,
+      fields: ['createdAt'],
+    },
+  ],
 });
 
 Zipcode.hasOne(Address);

@@ -1,6 +1,9 @@
 const crypto = require('crypto');
+const words = require('./words.json');
+
 
 const CONSUMER_URL = 'http://localhost:3000';
+const wordsLength = words.length;
 
 
 const createHash = (username) => {
@@ -9,11 +12,11 @@ const createHash = (username) => {
   return shasum.digest('hex');
 };
 
-const randomString = () => {
+const randomString = (num) => {
   const alphabets = 'abcdefghijklmnopqrstuvwxyz';
 
   let random = '';
-  for (let i = 0; i < 16; i += 1) {
+  for (let i = 0; i < num; i += 1) {
     random += alphabets[Math.floor(26 * Math.random())];
   }
 
@@ -21,6 +24,16 @@ const randomString = () => {
 };
 
 const randomNumber = (start, end) => start + Math.floor(Math.random() * ((end - start) + 1));
+
+const randomText = (num = randomNumber(1, 20)) => {
+  let text = '';
+
+  for (let i = 0; i < num; i += 1) {
+    text += ` ${words[Math.floor(wordsLength * Math.random())]}`;
+  }
+
+  return text;
+};
 
 const randomAge = () => randomNumber(18, 99);
 
@@ -42,6 +55,7 @@ module.exports = {
   CONSUMER_URL,
   createHash,
   randomString,
+  randomText,
   randomNumber,
   randomAge,
   randomMobile,

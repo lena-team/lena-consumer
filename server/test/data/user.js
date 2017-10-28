@@ -3,7 +3,7 @@ const helpers = require('../helpers/');
 
 
 const randomUser = () => {
-  const str = helpers.randomString();
+  const str = helpers.randomString(16);
 
   const user = {
     username: str,
