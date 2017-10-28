@@ -28,7 +28,7 @@ phases:
       - echo Build started on `date`
       - npm --version
       - node --version
-      - awscli --version
+      - aws --version
       - docker --version
       - npm test
 
