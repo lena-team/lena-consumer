@@ -22,10 +22,10 @@ phases:
       # - export DB_DATABASE=consumer
       # - export DB_HOST=consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com
       ### aws EC2 Specific Environment Variables
-      - export DB_USERNAME=$(aws ssm get-parameters --region us-west-1 --names DB_USERNAME --query Parameters[0].Value)
-      - export DB_PASSWORD=$(aws ssm get-parameters --region us-west-1 --names DB_PASSWORD --query Parameters[0].Value)
-      - export DB_HOST=$(aws ssm get-parameters --region us-west-1 --names DB_HOST --query Parameters[0].Value)
-      - export DB_DATABASE=$(aws ssm get-parameters --region us-west-1 --names DB_DATABASE --query Parameters[0].Value)
+      - export DB_USERNAME=$(aws ssm get-parameters --region us-west-1 --names DB_USERNAME --query Parameters[0].Value | cut -d'"' -f2)
+      - export DB_PASSWORD=$(aws ssm get-parameters --region us-west-1 --names DB_PASSWORD --query Parameters[0].Value | cut -d'"' -f2)
+      - export DB_HOST=$(aws ssm get-parameters --region us-west-1 --names DB_HOST --query Parameters[0].Value | cut -d'"' -f2)
+      - export DB_DATABASE=$(aws ssm get-parameters --region us-west-1 --names DB_DATABASE --query Parameters[0].Value | cut -d'"' -f2)
       - echo $NODE_ENV $DB_USERNAME $DB_PASSWORD $DB_HOST $DB_DIALECT $DB_DATABASE
       ### date and utility versioning for reference
       - echo Build started on `date`
