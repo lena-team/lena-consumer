@@ -12,6 +12,13 @@ const Cart = sequelize.define('carts', {
   quantity: {
     type: Sequelize.INTEGER,
   },
+}, {
+  indexes: [
+    {
+      // unique: true,
+      fields: ['userId', 'createdAt'],
+    },
+  ],
 });
 
 

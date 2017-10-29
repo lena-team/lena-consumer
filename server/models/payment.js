@@ -18,6 +18,13 @@ const Payment = sequelize.define('payments', {
   card_cvv: {
     type: Sequelize.STRING,
   },
+}, {
+  indexes: [
+    {
+      // unique: true,
+      fields: ['userId', 'createdAt'],
+    },
+  ],
 });
 
 const sync = () => Payment.sync();

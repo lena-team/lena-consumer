@@ -34,6 +34,14 @@ const User = sequelize.define('users', {
   lastname: {
     type: Sequelize.STRING,
   },
+}, {
+  indexes: [
+    {
+      unique: true,
+      name: 'gender_age',
+      fields: ['gender', 'age'],
+    },
+  ],
 });
 
 User.hasMany(Cart);

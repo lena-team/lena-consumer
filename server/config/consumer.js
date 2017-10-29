@@ -19,7 +19,7 @@ module.exports = {
     define: {
       timestamps: true,
     },
-    logging: true,
+    logging: false,
   },
   prod: {
     username: process.env.DB_USERNAME,
