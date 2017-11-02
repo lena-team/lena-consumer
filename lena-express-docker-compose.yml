@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  node:
+    build:
+      context: .
+      dockerfile: dockerfile/node
+    image: nsaboo/node
+    volumes:
+      - .:/code
+      - lenalog:/var/log
+    environment:
+      - NODE_ENV=prod
+      - DB_USERNAME=lenaadmin
+      - DB_PASSWORD=lenaadmin
+      - DB_DATABASE=consumer
+      - DB_HOST=consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com
+      - DB_DIALECT=mysql
+    ports:
+      - "3000:3000"
+    networks:
+      - express-tier
+    # command: printenv
+
+volumes:
+  lenalog:
+    driver: local
+
+networks:
+  express-tier:
+    driver: bridge
