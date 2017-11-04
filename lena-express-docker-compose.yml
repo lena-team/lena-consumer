@@ -6,7 +6,6 @@ services:
       dockerfile: dockerfile/node
     image: nsaboo/node
     volumes:
-      - .:/code
       - lenalog:/var/log
     environment:
       - NODE_ENV=prod
@@ -23,6 +22,8 @@ services:
 
 volumes:
   lenalog:
+    driver: local
+  lena-data:
     driver: local
 
 networks:
