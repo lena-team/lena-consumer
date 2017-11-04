@@ -2,7 +2,7 @@
 
 sudo yum update
 
-sudo yum install git docker
+sudo yum install git docker telnet
 
 sudo curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
@@ -23,3 +23,6 @@ source /etc/bash_completion.d/docker-compose
 # docker info
 # git clone https://github.com/lena-team/lena-consumer.git
 
+
+
+# docker swarm related ports need to be added to security groups and attached to ec2 instances micros
