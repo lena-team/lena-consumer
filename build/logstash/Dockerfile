@@ -1,6 +1,8 @@
 # docker image
 FROM docker.elastic.co/elasticsearch/elasticsearch:5.6.3
 
+RUN rm -f /usr/share/logstash/pipeline/logstash.conf
+
 # Create app directory
 # WORKDIR /usr/src/app
 

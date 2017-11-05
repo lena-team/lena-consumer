@@ -35,7 +35,7 @@ path.data: /usr/share/logstash/data
 #
 # This defaults to the number of the host's CPU cores.
 #
-# pipeline.workers: 2
+pipeline.workers: 1
 #
 # How many workers should be used per output plugin instance
 #
@@ -62,7 +62,8 @@ path.data: /usr/share/logstash/data
 #
 # Where to fetch the pipeline configuration for the main pipeline
 #
-path.config: /etc/logstash/conf.d
+#path.config: /etc/logstash/conf.d
+path.config: /usr/share/logstash/pipeline
 #
 # Pipeline configuration string for the main pipeline
 #
