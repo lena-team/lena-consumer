@@ -1,22 +1,13 @@
 version: '3.3'
 services:
-  kibana:
-    image: docker.elastic.co/kibana/kibana:5.6.3
-    # depends_on:
-      # - elasticsearch1
-    ports:
-      - 5601:5601
-    networks:
-      - back-tier
-    volumes:
-      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
   elasticsearch1:
     container_name: elasticsearch1
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     ports:
       - 9200:9200
+      - 9300:9300
     networks:
-      - back-tier
+      - elk-tier
     environment:
       - cluster.name=lena-cluster
       - bootstrap.memory_lock=true
@@ -33,7 +24,7 @@ services:
   elasticsearch2:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     networks:
-      - back-tier
+      - elk-tier
     environment:
       - cluster.name=lena-cluster
       - bootstrap.memory_lock=true
@@ -48,14 +39,44 @@ services:
         hard: -1
     volumes:
       - esdata2:/usr/share/elasticsearch/data
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.6.3
+    ports:
+      - 5601:5601
+    networks:
+      - elk-tier
+    volumes:
+      - ./configs/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+  logstash:
+    build: build/logstash
+    # image: nsaboo/logstash
+    ports:
+      - 5000:5000
+    environment:
+      - xpack.monitoring.enabled=false
+      - "LS_JAVA_OPTS=-Xmx256m -Xms256m"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elk-tier
+    volumes:
+      - logstash-data:/usr/share/logstash/data
 
 networks:
-  back-tier:
+  elk-tier:
    driver: bridge
-  # front-tier:
 
 volumes:
   esdata1:
     driver: local
   esdata2:
+    driver: local
+  logstash-data:
+    driver: local
+  lena-data:
     driver: local
