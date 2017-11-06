@@ -10,7 +10,7 @@ const app = express();
 
 // create a write stream (in append mode)
 // var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
-const accessLogStream = fs.createWriteStream('/var/log/access.log', { flags: 'a' });
+const accessLogStream = fs.createWriteStream('./access.log', { flags: 'a' });
 
 app.use(morgan('combined', { stream: accessLogStream }));
 
