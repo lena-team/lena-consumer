@@ -1,8 +1,12 @@
 #!/bin/bash
 
+#####
+# sudo yum install -y git && git clone https://github.com/lena-team/lena-consumer.git && cd lena-consumer/ && git checkout develop && bash aws_setup.sh
+#####
+
 sudo yum update
 
-sudo yum install git docker telnet
+sudo yum install -y git docker telnet
 
 sudo curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
@@ -27,7 +31,5 @@ source /etc/bash_completion
 
 # docker info
 # git clone https://github.com/lena-team/lena-consumer.git
-
-
 
 # docker swarm related ports need to be added to security groups and attached to ec2 instances micros
