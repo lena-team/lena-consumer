@@ -48,7 +48,9 @@ services:
     volumes:
       - ./configs/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
   logstash:
-    build: build/logstash
+    build:
+      context: build/logstash/
+      dockerfile: Dockerfile
     # image: nsaboo/logstash
     ports:
       - 5000:5000

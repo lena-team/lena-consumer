@@ -3,7 +3,7 @@ services:
   node:
     build:
       context: .
-      dockerfile: dockerfile/node
+      dockerfile: build/node/Dockerfile
     image: nsaboo/node
     volumes:
       - lenalog:/var/log
