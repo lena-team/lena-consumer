@@ -88,14 +88,14 @@ services:
     networks:
       - lena-tier
     volumes:
-      - ./configs/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./build/kibana/configs/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - 5601:5601
   logstash:
     build:
       context: build/logstash
       dockerfile: Dockerfile
-    image: nsaboo/logstash
+    image: nsaboo/logstash:latest
     depends_on:
       - elasticsearch1
     deploy:
@@ -118,6 +118,7 @@ services:
       - lena-tier
     volumes:
       - logstash-data:/usr/share/logstash/data
+      - lena-applogs:/var/log/
     ports:
       - 5000:5000
     environment:
@@ -135,7 +136,7 @@ services:
     build:
       context: .
       dockerfile: build/node/Dockerfile
-    image: nsaboo/node
+    image: nsaboo/node:latest
     deploy:
       # mode: replicated
       mode: global
@@ -165,6 +166,7 @@ services:
       - DB_DATABASE=consumer
       - DB_HOST=consumer.c95v7ebbwqka.us-west-1.rds.amazonaws.com
       - DB_DIALECT=mysql
+      - EXPRESS_LOG_FILE=/usr/src/app/logs/access.log
 
 networks:
   lena-tier:
@@ -176,8 +178,6 @@ volumes:
   esdata2:
     driver: local
   logstash-data:
-    driver: local
-  lena-data:
     driver: local
   lena-applogs:
     driver: local
