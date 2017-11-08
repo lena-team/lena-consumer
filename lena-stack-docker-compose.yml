@@ -3,6 +3,7 @@ services:
   elasticsearch1:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     deploy:
+      mode: replicated
       replicas: 1
       placement:
         constraints:
@@ -37,6 +38,7 @@ services:
 #  elasticsearch2:
 #    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
 #    deploy:
+#      mode: replicated
 #      replicas: 1
 #      placement:
 #        constraints:
@@ -68,12 +70,12 @@ services:
   kibana:
     image: docker.elastic.co/kibana/kibana:5.6.3
     deploy:
+      mode: replicated
       replicas: 1
       placement:
         constraints:
-          - node.role == manager
-#          - node.role == worker
-#          - node.labels.instance == lena-kibana
+          - node.role == worker
+          - node.labels.instance == lena-kibana
       update_config:
         parallelism: 1
         delay: 10s
@@ -93,6 +95,7 @@ services:
       dockerfile: Dockerfile
     image: nsaboo/logstash
     deploy:
+      mode: replicated
       replicas: 1
       placement:
         constraints:
@@ -113,7 +116,7 @@ services:
       - 5000:5000
     environment:
       - xpack.monitoring.enabled=false
-      # - bootstrap.memory_lock=true
+      - bootstrap.memory_lock=true
       - "LS_JAVA_OPTS=-Xms256m -Xmx256m"
     ulimits:
       nofile:
@@ -125,9 +128,10 @@ services:
   node:
     build:
       context: .
-      dockerfile: dockerfile/node
+      dockerfile: build/node/Dockerfile
     image: nsaboo/node
     deploy:
+      mode: replicated
       replicas: 1
       placement:
         constraints:
