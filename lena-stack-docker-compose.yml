@@ -3,6 +3,7 @@ services:
   elasticsearch1:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     deploy:
+      mode: replicated
       replicas: 1
       placement:
         constraints:
@@ -37,6 +38,7 @@ services:
 #  elasticsearch2:
 #    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
 #    deploy:
+#      mode: replicated
 #      replicas: 1
 #      placement:
 #        constraints:
@@ -67,13 +69,15 @@ services:
 #        hard: -1
   kibana:
     image: docker.elastic.co/kibana/kibana:5.6.3
+    depends_on:
+      - logstash
     deploy:
+      mode: replicated
       replicas: 1
       placement:
         constraints:
-          - node.role == manager
-#          - node.role == worker
-#          - node.labels.instance == lena-kibana
+          - node.role == worker
+          - node.labels.instance == lena-kibana
       update_config:
         parallelism: 1
         delay: 10s
@@ -92,12 +96,17 @@ services:
       context: build/logstash
       dockerfile: Dockerfile
     image: nsaboo/logstash
+    depends_on:
+      - elasticsearch1
     deploy:
-      replicas: 1
+      # mode: replicated
+      mode: global
+      # replicas: 1
       placement:
         constraints:
           - node.role == worker
-          - node.labels.instance == lena-logstash
+          # - node.labels.instance == lena-logstash
+          - node.labels.instance == lena-common
       update_config:
         parallelism: 1
         delay: 10s
@@ -113,8 +122,8 @@ services:
       - 5000:5000
     environment:
       - xpack.monitoring.enabled=false
-      # - bootstrap.memory_lock=true
-      - "LS_JAVA_OPTS=-Xms256m -Xmx256m"
+      - bootstrap.memory_lock=true
+      - "LS_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       nofile:
         soft: 65536
@@ -125,14 +134,17 @@ services:
   node:
     build:
       context: .
-      dockerfile: dockerfile/node
+      dockerfile: build/node/Dockerfile
     image: nsaboo/node
     deploy:
-      replicas: 1
+      # mode: replicated
+      mode: global
+      # replicas: 1
       placement:
         constraints:
           - node.role == worker
-          - node.labels.instance == lena-web
+          # - node.labels.instance == lena-web
+          - node.labels.instance == lena-common
       update_config:
         parallelism: 1
         delay: 10s
@@ -143,7 +155,7 @@ services:
     networks:
       - lena-tier
     volumes:
-      - lenalog:/var/log
+      - lena-applogs:/usr/src/app/logs
     ports:
       - "3000:3000"
     environment:
@@ -167,5 +179,5 @@ volumes:
     driver: local
   lena-data:
     driver: local
-  lenalog:
+  lena-applogs:
     driver: local

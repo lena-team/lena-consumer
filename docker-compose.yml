@@ -3,7 +3,7 @@ services:
   node:
     build:
       context: .
-      dockerfile: dockerfile/node
+      dockerfile: build/node/Dockerfile
     image: nsaboo/node
     volumes:
       - .:/code
@@ -14,13 +14,13 @@ services:
       - mysql
   mysql:
     build:
-      context: .
-      dockerfile: dockerfile/mysql
+      context: build/mysql/
+      dockerfile: Dockerfile
     image: nsaboo/mysql
   python:
     build:
-      context: .
-      dockerfile: dockerfile/python
+      context: build/python/
+      dockerfile: Dockerfile
     image: nsaboo/python
 volumes:
   logvolume01: {}

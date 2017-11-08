@@ -13,7 +13,7 @@ ADD configs/pipeline/ /usr/share/logstash/pipeline/
 ADD configs/settings/ /usr/share/logstash/config/
 
 ENTRYPOINT ["logstash"]
-CMD ["-f", "/usr/share/logstash/config/logstash.conf"]
+CMD ["-f", "/usr/share/logstash/pipeline/logstash.conf"]
 
 # to run locally with LS_JAVA_OPTS
 # docker run --rm -it -e LS_JAVA_OPTS="-Xms512m -Xmx512m" logstash

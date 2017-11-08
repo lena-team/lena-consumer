@@ -3,6 +3,8 @@ FROM node:latest
 # Create app directory
 WORKDIR /usr/src/app
 
+RUN mkdir logs
+
 # Install app dependencies
 COPY package.json .
 # For npm@5 or later, copy package-lock.json as well
