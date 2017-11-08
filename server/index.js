@@ -7,10 +7,11 @@ const path = require('path');
 const compression = require('compression');
 
 const app = express();
+const NODE_LOG_DIR = process.env.NODE_LOG_DIR || 'logs';
 
 // create a write stream (in append mode)
 // var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
-const accessLogStream = fs.createWriteStream('./access.log', { flags: 'a' });
+const accessLogStream = fs.createWriteStream(`./${NODE_LOG_DIR}/access.log`, { flags: 'a' });
 
 app.use(morgan('combined', { stream: accessLogStream }));
 
