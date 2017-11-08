@@ -39,7 +39,7 @@ const User = sequelize.define('users', {
     {
       // unique: true,
       name: 'gender_age',
-      fields: ['gender', 'age'],
+      fields: ['id', 'gender', 'age'],
     },
   ],
 });
