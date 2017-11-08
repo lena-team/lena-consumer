@@ -69,6 +69,8 @@ services:
 #        hard: -1
   kibana:
     image: docker.elastic.co/kibana/kibana:5.6.3
+    depends_on:
+      - logstash
     deploy:
       mode: replicated
       replicas: 1
@@ -94,13 +96,17 @@ services:
       context: build/logstash
       dockerfile: Dockerfile
     image: nsaboo/logstash
+    depends_on:
+      - elasticsearch1
     deploy:
-      mode: replicated
-      replicas: 1
+      # mode: replicated
+      mode: global
+      # replicas: 1
       placement:
         constraints:
           - node.role == worker
-          - node.labels.instance == lena-logstash
+          # - node.labels.instance == lena-logstash
+          - node.labels.instance == lena-common
       update_config:
         parallelism: 1
         delay: 10s
@@ -117,7 +123,7 @@ services:
     environment:
       - xpack.monitoring.enabled=false
       - bootstrap.memory_lock=true
-      - "LS_JAVA_OPTS=-Xms256m -Xmx256m"
+      - "LS_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       nofile:
         soft: 65536
@@ -131,12 +137,14 @@ services:
       dockerfile: build/node/Dockerfile
     image: nsaboo/node
     deploy:
-      mode: replicated
-      replicas: 1
+      # mode: replicated
+      mode: global
+      # replicas: 1
       placement:
         constraints:
           - node.role == worker
-          - node.labels.instance == lena-web
+          # - node.labels.instance == lena-web
+          - node.labels.instance == lena-common
       update_config:
         parallelism: 1
         delay: 10s
@@ -147,7 +155,7 @@ services:
     networks:
       - lena-tier
     volumes:
-      - lenalog:/var/log
+      - lena-applogs:/usr/src/app/logs
     ports:
       - "3000:3000"
     environment:
@@ -171,5 +179,5 @@ volumes:
     driver: local
   lena-data:
     driver: local
-  lenalog:
+  lena-applogs:
     driver: local
