@@ -87,8 +87,12 @@ services:
         max_attempts: 3
     networks:
       - lena-tier
-    volumes:
-      - ./build/kibana/configs/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    # volumes:
+      # - ./build/kibana/configs/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    environment:
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: changeme
+      ELASTICSEARCH_URL: http://elasticsearch1:9200
     ports:
       - 5601:5601
   logstash:
